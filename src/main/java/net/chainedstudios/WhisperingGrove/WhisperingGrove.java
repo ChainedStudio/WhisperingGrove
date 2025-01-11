@@ -2,10 +2,6 @@ package net.chainedstudios.WhisperingGrove;
 
 
 import com.mojang.logging.LogUtils;
-import net.chainedstudios.WhisperingGrove.block.Modblocks;
-import net.chainedstudios.WhisperingGrove.items.ModCreativeModTabs;
-import net.chainedstudios.WhisperingGrove.items.Moditem;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -28,10 +24,6 @@ public class WhisperingGrove {
     public WhisperingGrove(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
-        Moditem.register(modEventBus);
-        ModCreativeModTabs.register(modEventBus);
-        Modblocks.register(modEventBus);
-
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -43,10 +35,7 @@ public class WhisperingGrove {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(Moditem.GOLEMITE);
 
-        }
     }
 
     @SubscribeEvent
