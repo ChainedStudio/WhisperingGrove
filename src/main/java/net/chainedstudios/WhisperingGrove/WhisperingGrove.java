@@ -2,6 +2,9 @@ package net.chainedstudios.WhisperingGrove;
 
 
 import com.mojang.logging.LogUtils;
+import net.chainedstudios.WhisperingGrove.block.Modblocks;
+import net.chainedstudios.WhisperingGrove.items.ModCreativeModTabs;
+import net.chainedstudios.WhisperingGrove.items.Moditem;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -25,6 +28,9 @@ public class WhisperingGrove {
         IEventBus modEventBus = context.getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        Moditem.register(modEventBus);
+        Modblocks.register(modEventBus);
+        ModCreativeModTabs.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
